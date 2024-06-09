@@ -52,14 +52,14 @@ namespace PicConverter
                     // 画像ファイル以外の場合
                     if (!IsImageFile(file))
                     {
-                        MessageBox.Show("画像ファイルを入力してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("画像をいれやがれ", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         continue;
                     }
 
                     using (Image image = Image.FromFile(file))
                     {
                         string outputDirectory = Path.GetDirectoryName(file);
-                        string outputFileName = $"{Path.GetFileNameWithoutExtension(file)}.{format.ToString().ToLower()}";
+                        string outputFileName = $"{Path.GetFileNameWithoutExtension(file)}.{(format == ImageFormat.Icon ? "ico" : format.ToString().ToLower())}";
                         string outputFilePath = Path.Combine(outputDirectory, outputFileName);
 
                         if (File.Exists(outputFilePath))
